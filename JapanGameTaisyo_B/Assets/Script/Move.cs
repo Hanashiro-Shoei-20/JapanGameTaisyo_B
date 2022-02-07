@@ -8,7 +8,8 @@ public class Move : MonoBehaviour
     Rigidbody2D rb;
     float moveSpeed = 12.5f;
     public Material blue;
-    public Material greed;
+    public Material green;
+    bool Guard = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +29,34 @@ public class Move : MonoBehaviour
             rb.AddForce(force);
         }
 
+        if (Input.GetKey(KeyCode.Q))
+        {
+            GetComponent<Renderer>().material.color = blue.color;
+            Guard = true;
+        }
+        else
+        {
+            GetComponent<Renderer>().material.color = green.color;
+            Guard = false;
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "bullet")
+
+        if (other.gameObject.tag == "bullet")
         {
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
+
+            if (Guard == false)
+        {
+            if (other.gameObject.tag == "bullet")
+            {
+                Destroy(gameObject);
+                Destroy(other.gameObject);
+            }
+        }        
     }
 }
