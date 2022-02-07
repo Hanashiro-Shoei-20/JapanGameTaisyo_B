@@ -1,5 +1,9 @@
 sceneSetups:
-- path: Assets/Scenes/yuyaScene.unity
+<<<<<<< HEAD
+- path: Assets/Scenes/Hanashiro.unity
+=======
+- path: Assets/Scenes/takumi.unity
+>>>>>>> origin/Takumi
   isLoaded: 1
   isActive: 1
   isSubScene: 0
